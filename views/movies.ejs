@@ -11,16 +11,17 @@
 <body>
     <div class="bg-image"></div>
     <div class="main-content">
-        <h1>Results Page</h1>
-         <% movies.forEach((movie) => { %>
+        <h1>Top 10 Shows found</h1>
+            <% movies.forEach((movie) => { %>
         <p> 
             <%= movie["Title"] %>
+            (<%= movie["Year"] %>)
         </p>
         <% }) %>
 
-    
-        <p id="message-1"></p>
-        <p id="message-2"></p>
+        <form action="/">
+            <input type="submit" value="Search again" />
+        </form>
     </div>
     <script src="/js/app.js"></script>
 </body>

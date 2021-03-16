@@ -8,9 +8,9 @@ const movieFinder = (movie,callback) => {
         if(error){
             callback('Unable to connect to OMDB API',undefined)
         }
-        /* else if(body.response){
+         else if(body.Response === 'False'){
             callback('Show not found. Try another search',undefined)
-        } */
+        } 
         else{
             console.log(body)
             console.log(body.Search)

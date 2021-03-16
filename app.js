@@ -32,7 +32,7 @@ app.get('/movies', (req,res) => {
     console.log(movie)
     movieFinder(movie,(error,{movies} = {}) => {
         if(error){
-            return res.send({error})
+            return res.render('error',{error})
         }
         res.render('movies',{movies})
         /* res.send({
