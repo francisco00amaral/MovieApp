@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Results</title>
+    <link rel="icon" href="/img/icon.jpg">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body id="body">
+    <div class="image"></div>
+    <div class="main-content">
+        <h1>  <%= body["Title"] %></h1>
+        <p>
+             <%= body["Plot"] %>
+        </p>
+           <img src=<%= body["Poster"] %>> 
+        <p>Type: <%= body["Type"] %></p>
+
+        <p>Rating:(<%= body["imdbRating"] %>)</p>
+        <p>Genre: <%= body["Genre"] %></p>
+        <p>Released: <%= body["Released"] %></p>
+        <p>Awards: <%= body["Awards"] %></p>
+        <a href="http://www.imdb.com/title/<%= body["imdbID"] %>">IMDB</a>
+        <p></p>
+        <form action="/">
+            <input type="submit" value="Search again" />
+        </form>
+    </div>
+</body>
+<!-- <script>
+    
+    console.log(poster)
+</script> -->
+
+</html>
