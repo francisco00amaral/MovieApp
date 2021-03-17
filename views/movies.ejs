@@ -13,8 +13,8 @@
     <div class="main-content">
         <h1>Top 10 Shows found</h1>
             <% movies.forEach((movie) => { %>
-        <p> 
-            <%= movie["Title"] %>
+        <p>
+            <a href="/movies/<%= movie["imdbID"] %>"><%= movie["Title"] %></a>
             (<%= movie["Year"] %>)
         </p>
         <% }) %>

@@ -15,15 +15,12 @@ console.log(publicDirectory)
 app.use(express.static(publicDirectory))
 
 app.get('',(req,res) => {
-    res.render('index',{
-        title: 'joao',
-        primo: 'VAI PUTO QUE EU SOU DO BACKENDDDDD'
-    })
+    res.render('index')
 })
 
 app.get('/movies', (req,res) => {
     if(!req.query.movie){
-        return res.send({
+        return res.render('error',{
             error: 'You must provide a name!'
         })
     }
@@ -42,11 +39,31 @@ app.get('/movies', (req,res) => {
     })
 })
 
+app.get('/movies/*',(req,res) => {
+   const movieID = req.params['0']
+
+  const url = "http://omdbapi.com/?i=" + movieID + "&apikey=6db46ec";
+
+  request({url, json:true} , (error, {body} = {})  => {
+    if(error){
+        return res.render('error',{
+            error: 'Unable to connect to OMDB API'
+        })
+    }
+    if(body.Response === 'False'){
+        return res.render('error',{
+            error: 'Show not found. Try another search'
+        })
+    } 
+    else{
+        res.render('id',{body})
+    }
+})
+ })
+
 app.get('*',(req,res) => {
     res.render('error',{
-        title:'404',
-        name: 'Francisco',
-        errorMessage: 'Page not found'
+        error: 'Page not found'
     })
 })
 
